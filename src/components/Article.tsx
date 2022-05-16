@@ -7,35 +7,6 @@ interface ArticleProps {
 
 const Article: React.FunctionComponent<ArticleProps> = (props) => {
   return (
-    // <article>
-    //   <h2 className="title">{props.article.title}</h2>
-    //   <ul className="info__container">
-    //     <li className="info__item">{props.article.tag}</li>
-    //     <li className="info__item">
-    //       Added by
-    //       <span className="info__mark">{props.article.author}</span>
-    //     </li>
-    //     <li className="info__item">{props.article.date}</li>
-    //   </ul>
-    //   <div className="actions__container">
-    //     <button type="button" className="actions__btn">
-    //       Edit
-    //     </button>
-    //     <button type="button" className="actions__btn">
-    //       Delete
-    //     </button>
-    //   </div>
-
-    //   <img src={props.article.imgUrl} alt="Bike" />
-    //   <div className="content__container">
-    //     <p>{props.article.summary}</p>
-    //   </div>
-    //   <div className="readmore__container">
-    //     <button type="button" className="button">
-    //       Read More
-    //     </button>
-    //   </div>
-    // </article>
     <article>
       <h1>{props.article.title}</h1>
       <div className="article-info">

@@ -220,7 +220,3 @@ button.save {
   background: var(--color-accent);
   margin-right: 75px;
 }
-
-.no-display {
-  display: none;
-}

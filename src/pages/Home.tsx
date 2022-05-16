@@ -1,6 +1,6 @@
 import Menu from "../components/Menu";
 import Article from "../components/Article";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BlogArticle } from "../models/Blog.model";
 
 const Home: React.FunctionComponent = () => {
@@ -8,7 +8,7 @@ const Home: React.FunctionComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:4000/articles");
+      const response = await fetch("http://localhost:3000/articles");
       const json = await response.json();
       setArticles(json);
       console.log(json);
@@ -17,12 +17,14 @@ const Home: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div>
-      <Menu />
-      {articles.map((blogArticle) => (
-        <Article key={blogArticle.id} article={blogArticle} />
-      ))}
-    </div>
+    <React.Fragment>
+      <div>
+        <Menu />
+        {articles.map((blogArticle) => (
+          <Article key={blogArticle.id} article={blogArticle} />
+        ))}
+      </div>
+    </React.Fragment>
   );
 };
 

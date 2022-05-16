@@ -1,29 +1,7 @@
+import AddArticleBtn from "./AddArticleBtn";
+
 const Menu: React.FunctionComponent = () => {
   return (
-    // <nav classNameName="nav">
-    //   <ul classNameName="nav__container">
-    //     <li classNameName="nav__item">
-    //       <a href="/home" classNameName="nav__link">
-    //         Travel updates
-    //       </a>
-    //     </li>
-    //     <li classNameName="nav__item">
-    //       <a href="/home" classNameName="nav__link">
-    //         Reviews
-    //       </a>
-    //     </li>
-    //     <li classNameName="nav__item">
-    //       <a href="/home" classNameName="nav__link">
-    //         About
-    //       </a>
-    //     </li>
-    //     <li classNameName="nav__item">
-    //       <a href="/home" classNameName="nav__link">
-    //         Contact
-    //       </a>
-    //     </li>
-    //   </ul>
-    // </nav>
     <header>
       <nav className="navigation">
         <ul>
@@ -37,10 +15,11 @@ const Menu: React.FunctionComponent = () => {
             <a href="/home">ABOUT</a>
           </li>
           <li>
-            <a href="/homes">CONTACT</a>
+            <a href="/home">CONTACT</a>
           </li>
         </ul>
       </nav>
+      <AddArticleBtn />
     </header>
   );
 };
