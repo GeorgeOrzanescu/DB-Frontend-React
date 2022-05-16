@@ -2,6 +2,7 @@ import Menu from "../components/Menu";
 import Article from "../components/Article";
 import React, { useEffect, useState } from "react";
 import { BlogArticle } from "../models/Blog.model";
+import Footer from "../components/Footer";
 
 const Home: React.FunctionComponent = () => {
   const [articles, setArticles] = useState<BlogArticle[]>([]);
@@ -18,12 +19,11 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <React.Fragment>
-      <div>
-        <Menu />
-        {articles.map((blogArticle) => (
-          <Article key={blogArticle.id} article={blogArticle} />
-        ))}
-      </div>
+      <Menu />
+      {articles.map((blogArticle) => (
+        <Article key={blogArticle.id} article={blogArticle} />
+      ))}
+      <Footer />
     </React.Fragment>
   );
 };

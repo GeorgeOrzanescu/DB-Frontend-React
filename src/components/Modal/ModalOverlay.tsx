@@ -1,6 +1,5 @@
 type ModalOverlayProps = {
   handleCloseModal: () => void;
-  isModalOpen: boolean;
 };
 
 const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {

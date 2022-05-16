@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddModal from "./AddModal";
+import AddModal from "../Modal/AddModal";
 
 const AddArticleBtn: React.FunctionComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,14 +14,11 @@ const AddArticleBtn: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="btn" onClick={handleOpenModal}>
+    <div className="btn">
       {isModalOpen && (
-        <AddModal
-          handleCloseModal={handleCloseModal.bind(this)}
-          isModalOpen={isModalOpen}
-        />
+        <AddModal handleCloseModal={handleCloseModal.bind(this)} />
       )}
-      <button className="btn-add" id="btn-add">
+      <button className="btn-add" id="btn-add" onClick={handleOpenModal}>
         <img src="img/plus.png" alt="plus symbol" />
         ADD ARTICLE
       </button>

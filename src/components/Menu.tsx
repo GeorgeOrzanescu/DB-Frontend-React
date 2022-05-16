@@ -1,4 +1,4 @@
-import AddArticleBtn from "./AddArticleBtn";
+import AddArticleBtn from "./Buttons/AddArticleBtn";
 
 const Menu: React.FunctionComponent = () => {
   return (
