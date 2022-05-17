@@ -6,16 +6,16 @@ const Menu: React.FunctionComponent = () => {
       <nav className="navigation">
         <ul>
           <li>
-            <a href="/home">TRAVEL UPDATES</a>
+            <a href="/#">TRAVEL UPDATES</a>
           </li>
           <li>
-            <a href="/home">REVIEWS</a>
+            <a href="/#">REVIEWS</a>
           </li>
           <li>
-            <a href="/home">ABOUT</a>
+            <a href="/#">ABOUT</a>
           </li>
           <li>
-            <a href="/home">CONTACT</a>
+            <a href="/#">CONTACT</a>
           </li>
         </ul>
       </nav>
