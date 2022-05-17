@@ -9,6 +9,7 @@ type Pagination = {
   toDisplay: number;
   startIndex: number;
   endIndex: number;
+  maxPage: number;
 };
 
 const Home: React.FunctionComponent = () => {
@@ -18,6 +19,7 @@ const Home: React.FunctionComponent = () => {
     toDisplay: 3,
     startIndex: 0,
     endIndex: 3,
+    maxPage: 0,
   });
 
   useEffect(() => {
@@ -28,27 +30,38 @@ const Home: React.FunctionComponent = () => {
       const json = await response.json();
       setArticles(json);
       setIsLoading(false);
+      setPagination((prevPagination) => {
+        return {
+          ...prevPagination,
+          maxPage: json.length,
+        };
+      });
     };
     fetchData();
   }, []);
 
   const goToPrevPage = () => {
     const { startIndex, endIndex, toDisplay } = pagination;
-
-    setPagination({
-      startIndex: startIndex - toDisplay,
-      endIndex: endIndex - toDisplay - 1,
-      toDisplay: toDisplay,
-    });
+    if (startIndex - toDisplay >= 0) {
+      setPagination({
+        startIndex: startIndex - toDisplay,
+        endIndex: endIndex - toDisplay - 1,
+        toDisplay: toDisplay,
+        maxPage: articles.length,
+      });
+    }
   };
 
   const goToNextPage = () => {
     const { startIndex, endIndex, toDisplay } = pagination;
-    setPagination({
-      startIndex: startIndex + toDisplay,
-      endIndex: endIndex + toDisplay + 1,
-      toDisplay: toDisplay,
-    });
+    if (endIndex + 1 <= articles.length) {
+      setPagination({
+        startIndex: startIndex + toDisplay,
+        endIndex: endIndex + toDisplay + 1,
+        toDisplay: toDisplay,
+        maxPage: articles.length,
+      });
+    }
   };
 
   return (

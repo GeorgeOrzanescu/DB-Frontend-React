@@ -10,6 +10,7 @@ const Details: React.FunctionComponent = () => {
   const [article, setArticle] = useState<BlogArticle>({} as BlogArticle);
   const [content, setContent] = useState<string[]>([]);
   const [pagination, setPagination] = useState(parseInt(articleId as string));
+  const [maxPage, setMaxPage] = useState(0);
 
   const navigation: IpageFooterProps = {
     clickPrev: () => {
@@ -18,7 +19,7 @@ const Details: React.FunctionComponent = () => {
       }
     },
     clickNext: () => {
-      if (pagination >= 1) {
+      if (pagination + 1 <= maxPage) {
         setPagination(pagination + 1);
       }
     },
@@ -27,11 +28,14 @@ const Details: React.FunctionComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles/${pagination}`
+        `https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles/`
       );
+      const json = await response.json();
+      setMaxPage(json.length);
       if (response.status === 200) {
-        const json = await response.json();
-        setArticle(json);
+        setArticle(
+          json.find((article: BlogArticle) => article.id === pagination)
+        );
 
         let mid: number;
         if (article.content) {
