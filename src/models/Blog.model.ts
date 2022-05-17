@@ -9,3 +9,8 @@ export interface BlogArticle {
   summary: string;
   content: string;
 }
+
+export interface IpageFooterProps {
+  clickPrev: () => void;
+  clickNext: () => void;
+}
