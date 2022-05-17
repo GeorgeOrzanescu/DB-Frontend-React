@@ -19,7 +19,7 @@ const AddArticleBtn: React.FunctionComponent = () => {
         <AddModal handleCloseModal={handleCloseModal.bind(this)} />
       )}
       <button className="btn-add" id="btn-add" onClick={handleOpenModal}>
-        <img src="img/plus.png" alt="plus symbol" />
+        <img src={process.env.PUBLIC_URL + "/img/plus.png"} alt="plus symbol" />
         ADD ARTICLE
       </button>
     </div>

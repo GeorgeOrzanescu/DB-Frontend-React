@@ -26,7 +26,7 @@ const Article: React.FunctionComponent<ArticleProps> = (props) => {
         <button className="btn-edit">Delete</button>
       </div>
       <div className="article-img">
-        <img src={props.article.imgUrl} alt="" />
+        <img src={process.env.PUBLIC_URL + "/" + props.article.imgUrl} alt="" />
       </div>
       <div className="article-paragraph">
         <p>{props.article.summary}</p>

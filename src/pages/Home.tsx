@@ -9,7 +9,9 @@ const Home: React.FunctionComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:3000/articles");
+      const response = await fetch(
+        "https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles"
+      );
       const json = await response.json();
       setArticles(json);
       console.log(json);
