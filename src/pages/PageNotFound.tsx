@@ -9,9 +9,6 @@ const PageNotFound: React.FunctionComponent = () => {
         <li>
           <Link to="/home">Home</Link>
         </li>
-        <li>
-          <Link to="/details">Details</Link>
-        </li>
       </ul>
     </div>
   );

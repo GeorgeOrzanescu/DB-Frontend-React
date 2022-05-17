@@ -117,6 +117,19 @@ div.article-paragraph {
   margin-top: 80px;
 }
 
+/* quote */
+.saying {
+  font-family: var(--montserrat-font);
+  font-size: 28px;
+  font-style: italic;
+  line-height: 30px;
+  background: var(--pink-color);
+  padding: 105px;
+  margin-right: -105px;
+  margin-left: -105px;
+  text-align: center;
+}
+
 /* Read more button */
 .readmore__container {
   display: flex;

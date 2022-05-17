@@ -10,7 +10,7 @@ const App: React.FunctionComponent = () => {
       <HashRouter>
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/details/:articleId" element={<Details />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </HashRouter>

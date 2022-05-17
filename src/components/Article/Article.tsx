@@ -1,5 +1,5 @@
-import { BlogArticle } from "../models/Blog.model";
-import ReadMoreBtn from "./Buttons/ReadMoreBtn";
+import { BlogArticle } from "../../models/Blog.model";
+import ReadMoreBtn from "../Buttons/ReadMoreBtn";
 
 interface ArticleProps {
   article: BlogArticle;
@@ -31,7 +31,7 @@ const Article: React.FunctionComponent<ArticleProps> = (props) => {
       <div className="article-paragraph">
         <p>{props.article.summary}</p>
       </div>
-      <ReadMoreBtn />
+      <ReadMoreBtn articleId={props.article.id} />
     </article>
   );
 };

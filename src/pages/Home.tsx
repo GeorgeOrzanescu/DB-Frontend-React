@@ -1,5 +1,5 @@
 import Menu from "../components/Menu";
-import Article from "../components/Article";
+import Article from "../components/Article/Article";
 import React, { useEffect, useState } from "react";
 import { BlogArticle } from "../models/Blog.model";
 import Footer from "../components/Footer";
