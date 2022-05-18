@@ -1,5 +1,3 @@
-import AddArticleBtn from "./Buttons/AddArticleBtn";
-
 const Menu: React.FunctionComponent = () => {
   return (
     <header>
@@ -19,7 +17,6 @@ const Menu: React.FunctionComponent = () => {
           </li>
         </ul>
       </nav>
-      <AddArticleBtn />
     </header>
   );
 };

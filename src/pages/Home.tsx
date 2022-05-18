@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { BlogArticle } from "../models/Blog.model";
 import Footer from "../components/Footer";
 import Loading from "../components/Loading";
+import AddArticleBtn from "../components/Buttons/AddArticleBtn";
 
 type Pagination = {
   toDisplay: number;
@@ -22,21 +23,23 @@ const Home: React.FunctionComponent = () => {
     maxPage: 0,
   });
 
+  const fetchData = async () => {
+    const response = await fetch(
+      //"https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles"
+      "http://localhost:4000/articles"
+    );
+    const json = await response.json();
+    setArticles(json);
+    setIsLoading(false);
+    setPagination((prevPagination) => {
+      return {
+        ...prevPagination,
+        maxPage: json.length,
+      };
+    });
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles"
-      );
-      const json = await response.json();
-      setArticles(json);
-      setIsLoading(false);
-      setPagination((prevPagination) => {
-        return {
-          ...prevPagination,
-          maxPage: json.length,
-        };
-      });
-    };
     fetchData();
   }, []);
 
@@ -67,6 +70,7 @@ const Home: React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <Menu />
+      <AddArticleBtn reRend={fetchData.bind(this)} />
       {!isLoading ? (
         articles
           .slice(pagination.startIndex, pagination.endIndex)

@@ -4,13 +4,17 @@ import ModalOverlay from "./ModalOverlay";
 
 type ModalOverlayProps = {
   handleCloseModal: () => void;
+  reRend: () => void;
 };
 
 const AddModal: React.FunctionComponent<ModalOverlayProps> = (props) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
-        <ModalOverlay handleCloseModal={props.handleCloseModal} />,
+        <ModalOverlay
+          handleCloseModal={props.handleCloseModal}
+          reRend={props.reRend}
+        />,
         document.getElementById("overlay-root") as HTMLElement
       )}
     </React.Fragment>

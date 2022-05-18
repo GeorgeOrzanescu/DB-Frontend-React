@@ -28,7 +28,8 @@ const Details: React.FunctionComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles/`
+        //`https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles/`
+        `http://localhost:4000/articles/`
       );
       const json = await response.json();
       setMaxPage(json.length);
