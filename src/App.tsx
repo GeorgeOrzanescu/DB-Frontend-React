@@ -9,9 +9,9 @@ const App: React.FunctionComponent = () => {
     <div className="app">
       <HashRouter>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/details/:articleId" element={<Details />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </HashRouter>
     </div>
