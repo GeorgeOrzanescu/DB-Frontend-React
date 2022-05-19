@@ -75,7 +75,11 @@ const Home: React.FunctionComponent = () => {
         articles
           .slice(pagination.startIndex, pagination.endIndex)
           .map((blogArticle) => (
-            <Article key={blogArticle.id} article={blogArticle} />
+            <Article
+              key={blogArticle.id}
+              article={blogArticle}
+              reRend={fetchData.bind(this)}
+            />
           ))
       ) : (
         <Loading />

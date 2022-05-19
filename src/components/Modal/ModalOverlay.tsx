@@ -1,37 +1,51 @@
 import { useState } from "react";
-import { AddedArticle } from "../../models/Blog.model";
+import { AddedArticle, BlogArticle } from "../../models/Blog.model";
 
 type ModalOverlayProps = {
   handleCloseModal: () => void;
   reRend: () => void;
+  articleToEdit?: BlogArticle;
 };
 
 const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {
   const [article, setArticle] = useState<AddedArticle>({
-    title: "",
-    tag: "",
-    author: "",
-    date: "",
-    imgUrl: "",
-    content: "",
+    title: props.articleToEdit ? props.articleToEdit.title : "",
+    tag: props.articleToEdit ? props.articleToEdit.tag : "",
+    author: props.articleToEdit ? props.articleToEdit.author : "",
+    date: props.articleToEdit ? props.articleToEdit.date : "",
+    imgUrl: props.articleToEdit ? props.articleToEdit.imgUrl : "",
+    content: props.articleToEdit ? props.articleToEdit.content : "",
   });
 
   const saveArticle = async () => {
-    await fetch(
-      //"https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles",
-      "http://localhost:4000/articles",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(article),
-      }
-    );
-    props.handleCloseModal();
-    props.reRend();
+    if (props.articleToEdit) {
+      props.articleToEdit.id > 0
+        ? await fetch(
+            //"https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles",
+            "http://localhost:4000/articles/" + props.articleToEdit.id,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(article),
+            }
+          )
+        : await fetch(
+            //"https://my-json-server.typicode.com/GeorgeOrzanescu/demo/articles",
+            "http://localhost:4000/articles",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(article),
+            }
+          );
+      props.handleCloseModal();
+      props.reRend();
+    }
   };
-
   return (
     <div id="modal" className="no-display">
       <div className="modal-content">
@@ -46,6 +60,9 @@ const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {
                 name="title"
                 id="title"
                 placeholder="Please enter title"
+                defaultValue={
+                  props.articleToEdit ? props.articleToEdit.title : ""
+                }
                 onChange={(e) =>
                   setArticle({ ...article, title: e.target.value })
                 }
@@ -57,6 +74,9 @@ const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {
                 name="tag"
                 id="tag"
                 placeholder="Please enter tag"
+                defaultValue={
+                  props.articleToEdit ? props.articleToEdit.tag : ""
+                }
                 onChange={(e) =>
                   setArticle({ ...article, tag: e.target.value })
                 }
@@ -68,6 +88,9 @@ const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {
                 name="author"
                 id="author"
                 placeholder="Please enter author"
+                defaultValue={
+                  props.articleToEdit ? props.articleToEdit.author : ""
+                }
                 onChange={(e) =>
                   setArticle({ ...article, author: e.target.value })
                 }
@@ -78,6 +101,9 @@ const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {
                 name="date"
                 id="date"
                 placeholder="Please enter date"
+                defaultValue={
+                  props.articleToEdit ? props.articleToEdit.date : ""
+                }
                 onChange={(e) =>
                   setArticle({ ...article, date: e.target.value })
                 }
@@ -89,6 +115,9 @@ const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {
                 name="image"
                 id="image"
                 placeholder="Please enter image url"
+                defaultValue={
+                  props.articleToEdit ? props.articleToEdit.imgUrl : ""
+                }
                 onChange={(e) =>
                   setArticle({ ...article, imgUrl: e.target.value })
                 }
@@ -100,6 +129,9 @@ const ModalOverlay: React.FunctionComponent<ModalOverlayProps> = (props) => {
                 id="content"
                 placeholder="Please enter content"
                 cols={100}
+                defaultValue={
+                  props.articleToEdit ? props.articleToEdit.content : ""
+                }
                 onChange={(e) =>
                   setArticle({ ...article, content: e.target.value })
                 }

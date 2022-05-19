@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BlogArticle } from "../../models/Blog.model";
 import ModalOverlay from "./ModalOverlay";
 
 type ModalOverlayProps = {
   handleCloseModal: () => void;
   reRend: () => void;
+  articleToEdit?: BlogArticle;
 };
 
 const AddModal: React.FunctionComponent<ModalOverlayProps> = (props) => {
@@ -14,6 +16,7 @@ const AddModal: React.FunctionComponent<ModalOverlayProps> = (props) => {
         <ModalOverlay
           handleCloseModal={props.handleCloseModal}
           reRend={props.reRend}
+          articleToEdit={props.articleToEdit}
         />,
         document.getElementById("overlay-root") as HTMLElement
       )}
