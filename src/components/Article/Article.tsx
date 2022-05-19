@@ -20,6 +20,10 @@ const Article: React.FunctionComponent<ArticleProps> = (props) => {
     setIsModalOpen(false);
   };
 
+  const getFirst1000Chars = (text: string) => {
+    return text.substring(0, 1000);
+  };
+
   const ArticleToEdit: BlogArticle = {
     ...props.article,
     title: props.article.title,
@@ -70,7 +74,7 @@ const Article: React.FunctionComponent<ArticleProps> = (props) => {
         <img src={process.env.PUBLIC_URL + "/" + props.article.imgUrl} alt="" />
       </div>
       <div className="article-paragraph">
-        <p>{props.article.summary}</p>
+        <p>{getFirst1000Chars(props.article.content)}</p>
       </div>
       <ReadMoreBtn articleId={props.article.id} />
     </article>

@@ -6,7 +6,6 @@ export interface BlogArticle {
   date: string;
   imgUrl: string;
   saying: string;
-  summary: string;
   content: string;
 }
 
